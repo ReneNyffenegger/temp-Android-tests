@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>008</title>
+
+<style type='text/css'>
+
+
+   html { height: 100%; 
+          margin:   0px
+        }
+   body { min-height: 100%;
+          margin    : 0px;
+          background-color: #040309}
+
+
+   #stage {
+     border:1px solid blue;
+     margin: 1px;
+     position: absolute;
+     color: yellow;
+     width: 320px; left:    0px;
+     height: 550px; top: 10px;
+            transform-origin: 50% 0%;
+/*  -webkit-transform-origin: 50% 0%;  */  /* Uncomment this one to create disorder! */
+   }
+   #debug {
+     background-color:yellow;
+     margin: 0px;
+     top: 180px;
+     left : 100px;
+     position: absolute;
+     color: black;
+   }
+   #wenn {
+     position: absolute;
+     color: #ff7733;
+     left: 105px;
+     font-size: 14px;
+     font-style:italic;
+   }
+   #rn {
+     position: absolute;
+     color: #1240af;
+     font-size: 35.5px;
+     top: 110px;
+     font-weight: bold;
+   }
+
+</style>
+
+<script type='text/javascript'>
+
+  var stage;
+  var debug;
+
+  var dbgTxtResize = '';
+
+  var w, h;
+
+  var cntScene;
+
+  var chars;
+  var wChar=24;
+  var hChar=46;
+
+  var nofCharsX;
+  var nofCharsY;
+
+  var tsLastCnt = 30;
+  var tsLast = new Array(tsLastCnt);
+
+  var ts_;
+
+  function hex2(n) {
+    return ('00' + n.toString(16)).substr(-2);
+  }
+
+
+  function resized() {
+
+    w = +document.body.clientWidth;
+    h = +document.body.clientHeight;
+
+
+
+
+    var relHeightToWidth = h*1.0/w;
+    dbgTxtResize = w + ' x ' + h + ' (' + relHeightToWidth.toFixed(2) + ')';
+
+
+
+    var scale = w/360.0;
+    stage.style.left = (w/2 - 160) + 'px';
+//  scale = 1;
+    stage.style.transform = 'scale(' + scale + ')';
+    stage.style.WebkitTransform = 'scale(' + scale + ')';
+
+    debug.innerHTML = dbgTxtResize + ', scale = ' + scale;
+
+  }
+
+
+  function main() {
+    window.onresize=resized;
+
+
+    stage = document.getElementById('stage');
+    debug = document.getElementById('debug');
+
+
+    resized();
+  }
+
+</script>
+
+</head>
+
+<body onload='main()'>
+
+  <!--  <canvas id='canvas'></canvas> -->
+
+  <div id='stage'>
+    <div id='wenn'>foo bar baz text more text one two three four five etc. write for writing's sake, someone might say?
+      <br>Anayway! I thinks so, too.
+    </div>
+    <div id='debug'>hello</div>
+    <div id='rn'>some blue text here</div>
+    <!--
+    <div id='passion'>Passion</div>
+    <div id='for'>for</div>
+    <div id='data'>Data</div>
+    -->
+<!--    <div id='mail'></div>
+<div id='phone'>+41 76 558 70 68</div> -->
+
+  </div>
+
+</body>
+</html>
+
